@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    font-size: min(.83333333vw, 1.8009478673vh);
+    transition: font-size .15s linear;
+    --background-1: #0e111a;
+    --background-2: #0e111bcc;
+    --action-1: #23af57;
+    --action-2: #d71f3e;
+    --timer: #d71f3e;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    overflow: hidden;
+    color: #fff;
+}
+
+#screen {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-1);
+    color: white;
+    
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5vh;
+    font-weight: 600;
+    
+    height: 63.3vmin;
+    width: 60vmin;
+    padding: 1vh;
+    z-index: 2;
+}
+
+.screen-icon {
+    font-size: 4vh;
+    padding-bottom: 1vh;
+    margin-top: -2vh;
+}
+
+/* Path */
+#path-container {
+    position: absolute;
+    left: 50%;
+    top: 48.5%;
+    transform: translate(-50%, -50%);
+}
+
+#path-game-container {
+    height: 62vmin;
+    width: 62vmin;
+}
+
+#path-grid, #spot-grid {
+    display: grid;
+    background-color: var(--background-1);
+    display: grid;
+    gap: 0.5vmin;
+    
+    height: 60vmin;
+    width: 60vmin;
+    padding: 1vh;
+}
+
+.timer-container {
+    margin-top: -0.5vh;
+    padding: 1.4vh 2vh 1.7vh;
+    background-color: var(--background-1);
+}
+
+.timer-outer {
+    height: 0.6vh;
+    width: 100%;
+    background-color: rgb(36, 36, 36);
+    border-radius: 2vh;
+}
+
+.timer-inner {
+    height: 0.6vh;
+    width: 100%;
+    background-color: var(--timer);
+    border-radius: 2vh;
+}
+
+.path-grid-square {
+    background-color: white;
+    margin: 0;
+    opacity: 0.05;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.path-square {
+    opacity: 0.2; 
+}
+
+.player {
+    background-color: var(--action-1);
+    opacity: 1;
+}
+
+.off-path-player {
+    background-color: var(--action-2);
+    opacity: 1;
+    font-size: 1.5vh;
+    animation: error-shake 0.3s linear 1;
+}
+
+@keyframes error-shake{
+	0% {
+		transform: rotate(0deg)
+	}
+	30% {
+		transform: rotate(8deg)
+	}
+	50% {
+		transform: rotate(-8deg)
+	}
+	100% {
+		transform: rotate(0deg)
+	}
+}
+
+#spot-container {
+    position: absolute;
+    left: 50%;
+    top: 48.2%;
+    transform: translate(-50%, -50%);
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+}
+
+#spot-target {
+    background-color: var(--background-2);
+    border: 2px solid white;
+    color: white;
+    
+    font-size: 7vh;
+    font-weight: 600;
+    text-align: center;
+    
+    margin: auto;
+    margin-top: -6vh;
+    margin-bottom: 1vh;
+    
+    width: 8.5vh;
+}
+
+.spot-grid-square  {   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: rgb(25, 25, 25);
+    color: white;
+    font-size: 3.5vh;
+}
+
+.spot-grid-square:hover {
+    background-color: var(--action-2);
+    cursor: pointer;
+}
+
+#math-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    display: flex;
+    flex-direction: column;
+    
+    background-color: var(--background-1);
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5vh;
+    font-weight: 600;
+    height: 62vmin;
+    width: 62vmin;
+}
+
+#math-grid {    
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    gap: 1.5vh;
+    margin: auto;
+    margin-top: 8vh;
+}
+
+.math-grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5vh;
+    
+    height: 4vh;
+    width: 4vh;
+}
+
+.math-op {
+    background-color: #ececec;
+}
+
+.math-answer {
+    background-color: var(--action-1);
+}
+
+.math-input {
+    background-color: var(--background-1);
+    border: 2px solid white;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5vh;
+    text-align: center;
+    padding: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+.math-num-input {
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+#math-buttons {
+    display: flex;
+    color: white;
+    margin: auto;
+}
+
+.math-button {
+    border: 2px solid white;
+    width: 7vh;
+    text-align: center;
+    padding: 0.5vh;
+    border-radius: 0.3vh;
+    margin: 0.5vh;
+}
+
+.math-button:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.interact-wrapper {
+    position: absolute;
+    /* left: 50%;
+    top: 50%; */
+    /* transform: translate(-50%, -50%); */
+}
+
+.close-wrapper {
+    display: flex; align-items: flex-start; gap: .25rem;
+}
+
+.options-list {
+    display: flex; flex-direction: column; gap: .5rem; max-width: 17.5rem; overflow: hidden;
+}
+
+.option-wrapper {
+    height: 2.75rem;
+    /* width: 12.5rem; */
+    padding: .75rem;
+    border-radius: .15rem;
+    display: flex; align-items: center; gap: .75rem;
+    background-color: #00000091; font-weight: 600;
+    animation: slide-out 750ms ease;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.option-wrapper > span {
+    text-align: left; overflow: hidden;
+}
+
+.option-check {
+    position: relative;
+    width: 1.25rem; height: 1.25rem; border-radius: 50%;
+    border: .15rem solid #9038d4;
+}
+
+.option-selected {
+    position: relative;
+    background: linear-gradient(90deg, rgba(90, 45, 130, 0.75) 0%, rgba(20,14,9,0.75) 93%);
+}
+
+.option-selected .option-check::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: .75rem; height: .75rem;
+    background-color: #9038d4;
+    border-radius: 50%;
+}
+
+.option-selected::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: .25rem;
+    background-color: #9038d4;
+    /* border-bottom-left-radius: .2rem;
+    border-top-left-radius: .2rem; */
+}
+
+.key-box {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    width: 2.75rem; height: 2.75rem;
+    background: linear-gradient(180deg, #060606e1 0%, rgb(68, 39, 84) 99%);
+    border: .2rem solid #9038d4;
+    border-radius: .5rem;
+    box-shadow: inset 0 0 .25rem #bd66ff81;
+    font-weight: 600;
+}
+
+.key-box::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #b355fc88;
+    border: .25rem solid #b355fc88;
+    width: 2.5rem; height: 2.5rem;
+    border-radius: .25rem;
+    animation: pulse 2.5s ease-out infinite;
+    z-index: -1;
+}
+
+.circle {
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(180deg, #060606e1 0%, rgb(68, 39, 84) 99%);
+    border-radius: 50%;
+    border: .25rem solid #9038d4;
+    z-index: 1;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .9rem;
+    opacity: 0.95;
+}
+
+.circle::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #b355fc88;
+    border: .25rem solid #b355fc88;
+    width: 2.5rem; height: 2.5rem;
+    border-radius: 50%;
+    animation: pulse 2.5s ease-out infinite;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.0);
+    }
+    70% {
+        opacity: 0.5;
+    }
+    80% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.0;
+        transform: translate(-50%, -50%) scale(1.75);
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        color: rgba(255, 255, 255, 0.0);
+        width: 0;
+        opacity: 0.0;
+    }
+    100% {
+        color: #fff;
+        width: 100%;
+        opacity: 1.0;
+    }
+}
