@@ -7,7 +7,7 @@ Config.Bridge = {
     MiniGame = 'path' --  path, spot and math
 }
 
-Config.UseInteract = false --(Soon more info 😍)
+Config.UseInteract = true --(Soon more info 😍)
 Config.PoliceJob = 'police'
 Config.PoliceJobs = 1
 

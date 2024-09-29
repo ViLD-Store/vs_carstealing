@@ -183,7 +183,7 @@ function SellVehicle()
                         RemoveCoolDown()
                     end,
                     canInteract = function()
-                        if not cooldown then
+                        if cooldown and sellingcar then
                             return true
                         end
             
