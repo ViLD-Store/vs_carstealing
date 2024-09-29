@@ -4,7 +4,7 @@ lua54 'yes'
 
 author 'Vild Store'
 description 'Car Robbery'
-version '0.0.1'
+version '0.0.2'
 
 shared_script 'config.lua'
 
