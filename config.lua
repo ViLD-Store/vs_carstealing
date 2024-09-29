@@ -7,6 +7,7 @@ Config.Bridge = {
     MiniGame = 'path' --  path, spot and math
 }
 
+Config.UseInteract = false --(Soon more info 😍)
 Config.PoliceJob = 'police'
 Config.PoliceJobs = 1
 
@@ -42,19 +43,35 @@ Config.Stealing_Cars = {
     },
     CarLocalisations = {
         [0] = {
-            veh_location = vector3(359.0553, -1884.6788, 24.8043),
+            veh_location = vector3(362.5755, -1901.0297, 24.8006),
             scanner_local = {
                 [0] = vector3(356.6270, -1896.4694, 24.8007),
             },
-            heading = 227.5470
+            heading = 225.1943
         },
-        [0] = {
+        [1] = {
             veh_location = vector3(354.2261, 438.2636, 146.3904),
             scanner_local = {
                 [0] = vector3(346.3746, 440.3703, 147.8711),
                 [1] = vector3(330.0071, 442.1160, 145.2287)
             },
             heading = 295.2698
+        },
+        [2] = {
+            veh_location = vector3(-564.0890, -446.8748, 33.5037),
+            scanner_local = {
+                [0] = vector3(-528.6183, -435.5323, 34.3612),
+                [1] = vector3(-505.1220, -442.5299, 34.4815)
+            },
+            heading = 270.6159
+        },
+        [3] = {
+            veh_location = vector3(-113.6040, -326.8205, 34.7465),
+            scanner_local = {
+                [0] = vector3(-115.5734, -372.6852, 38.1231),
+                [1] = vector3(-46.2218, -391.7847, 38.1579)
+            },
+            heading = 162.4536
         }
     },
     CarDeposit = {

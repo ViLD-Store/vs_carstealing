@@ -223,6 +223,41 @@ CreateThread(function()
     end
 end)
 
+function GetRandomOffset(vector3)
+    local offsetRange = 5.0 -- Define how large the offset can be
+    local offsetX = math.random() * offsetRange - (offsetRange / 2)
+    local offsetY = math.random() * offsetRange - (offsetRange / 2)
+    return vector3.x + offsetX, vector3.y + offsetY, vector3.z
+end
+
+-- Function to check distance between player and target
+function IsPlayerNearTarget(targetCoords, threshold)
+    local playerCoords = GetEntityCoords(PlayerPedId())
+    local distance = #(playerCoords - targetCoords) -- Distance between player and target
+    return distance <= threshold
+end
+
+-- Create blip with random offset
+function CreateBlipWithOffset(coords, blipParams)
+    local offsetX, offsetY, offsetZ = GetRandomOffset(coords)
+    local blip = AddBlipForCoord(offsetX, offsetY, offsetZ)
+    SetBlipSprite(blip, blipParams.sprite)
+    SetBlipDisplay(blip, blipParams.display)
+    if blipParams.scale then
+        SetBlipScale(blip, blipParams.scale)
+    end
+    SetBlipColour(blip, blipParams.color)
+    if blipParams.opacity then
+        SetBlipAlpha(blip, blipParams.opacity)
+    end
+    if blipParams.text then
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentSubstringPlayerName(blipParams.text)
+        EndTextCommandSetBlipName(blip)
+    end
+    return blip
+end
+
 function SetupDigiScanner(vector3, parameters)
     params = {}
     if vector3 and parameters then
@@ -239,29 +274,37 @@ function SetupDigiScanner(vector3, parameters)
             {type = "DRAW_INSTRUCTIONAL_BUTTONS"},
             {type = "SET_BACKGROUND_COLOUR"},
         })
+
         params = parameters
         targetCoords = vector3
         if parameters.blip then
-            blip = AddBlipForCoord(vector3)
-            SetBlipSprite(blip, parameters.blip.sprite)
-            SetBlipDisplay(blip, parameters.blip.display)
-            if parameters.blip.scale then
-                SetBlipScale(blip, parameters.blip.scale)
-            end
-            SetBlipColour(blip, parameters.blip.color)
-            if parameters.blip.opacity then
-                SetBlipAlpha(blip, parameters.blip.opacity)
-            end
-            if parameters.blip.text then
-                BeginTextCommandSetBlipName("STRING")
-                AddTextComponentSubstringPlayerName(parameters.blip.text)
-                EndTextCommandSetBlipName(blip)
-            end
+            blip = CreateBlipWithOffset(vector3, parameters.blip)
+            Citizen.CreateThread(function()
+                while true do
+                    Citizen.Wait(500) -- Check every 500ms
+                    if IsPlayerNearTarget(CarCoords, 20.0) then -- If player is within 10 units
+                        -- Delete current blip
+                        RemoveBlip(blip)
+
+                        -- Create a new blip at the original coordinates with sprite 530
+                        blip = AddBlipForCoord(CarCoords.x, CarCoords.y, CarCoords.z)
+                        SetBlipSprite(blip, 530)
+                        SetBlipDisplay(blip, 4) -- Example display type
+                        SetBlipScale(blip, 1.0) -- Example scale
+                        SetBlipColour(blip, 1) -- Example color
+                        break
+                    end
+                end
+            end)
         end
         InitiateDigiScanner()
     else
-        print('these variables must be defined.')
+        print('These variables must be defined.')
     end
 end
+
+RegisterNetEvent('vs_carstealing:rmblip', function()
+    RemoveBlip(blip)
+end)
 
 exports('SetupDigiScanner', SetupDigiScanner)
