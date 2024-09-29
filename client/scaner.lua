@@ -292,6 +292,9 @@ function SetupDigiScanner(vector3, parameters)
                         SetBlipDisplay(blip, 4) -- Example display type
                         SetBlipScale(blip, 1.0) -- Example scale
                         SetBlipColour(blip, 1) -- Example color
+                        BeginTextCommandSetBlipName("STRING")
+                        AddTextComponentSubstringPlayerName(parameters.blip.text)
+                        EndTextCommandSetBlipName(blip)
                         break
                     end
                 end

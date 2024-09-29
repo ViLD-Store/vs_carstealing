@@ -92,8 +92,21 @@ Config.Language = {
         Blip = 'Stolen Car',
         SellCar = 'Talk with pedro',
         RewardInfo = 'Hey greate work! Here is your payment for this job {REWARD}$. Come back later we might have another job for you!',
-        NoMuchPd = 'Hey men there is not much cops out there cant do it.'
-    }
+        NoMuchPd = 'Hey men there is not much cops out there cant do it.',
+        CarBuy = "Car Buyer"
+    },
+    ['pl'] = {
+        BlipName = 'Sygnał kluczyka pojazdu',
+        OpenMinigame = 'Zhakuj sygnał kluczyka',
+        TakeMission = 'Weź misję',
+        SuccessOpen = 'Udało ci się otworzyć pojazd. Masz 5 minut, aby uciec przed policją!',
+        GoAndFind = 'Idź do wyznaczonego obszaru i znajdź pojazd!',
+        Blip = 'Skradziony samochód',
+        SellCar = 'Porozmawiaj z Pedro',
+        RewardInfo = 'Świetna robota! Oto twoja zapłata za to zadanie {REWARD}$. Wróć później, możemy mieć dla ciebie kolejne zlecenie!',
+        NoMuchPd = 'Hej, nie ma zbyt wielu policjantów, nie dam rady tego zrobić.',
+        CarBuy = "Kupujący"
+    }      
 }
 
 -- Functions

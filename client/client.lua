@@ -145,24 +145,46 @@ function FoundX()
 end
 
 function SellVehicle()
+    -- Generate a random location for car deposit
     local RandomLocal = math.random(0,#Config.Stealing_Cars.CarDeposit)
-    SetNewWaypoint(Config.Stealing_Cars.CarDeposit[RandomLocal].x, Config.Stealing_Cars.CarDeposit[RandomLocal].y)
+    local carDepositLocation = Config.Stealing_Cars.CarDeposit[RandomLocal]
 
+    -- Add a blip for the Car Buyer
+    local carBuyerBlip = AddBlipForCoord(carDepositLocation.x, carDepositLocation.y, carDepositLocation.z)
+    SetBlipSprite(carBuyerBlip, 225)  -- Set an appropriate icon for the car buyer
+    SetBlipColour(carBuyerBlip, 1)    -- You can set the color here (1 = red, you can change this)
+    SetBlipScale(carBuyerBlip, 0.8)   -- Adjust blip size
+    SetBlipAsShortRange(carBuyerBlip, true)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentString(Config.Language[Config.Lang].CarBuy)
+    EndTextCommandSetBlipName(carBuyerBlip)
+
+    -- Set new waypoint to the car deposit location
+    SetNewWaypoint(carDepositLocation.x, carDepositLocation.y)
+
+    -- Ped model and animation
     local model = Config.Stealing_Cars.Ped.Ped
     RequestModel(model)
-	while not HasModelLoaded(model) do
-		Citizen.Wait(50)
-	end
+    while not HasModelLoaded(model) do
+        Citizen.Wait(50)
+    end
+
     sellingcar = true
-    spawnedPedd = CreatePed(0, model, Config.Stealing_Cars.CarDeposit[RandomLocal].x,Config.Stealing_Cars.CarDeposit[RandomLocal].y, Config.Stealing_Cars.CarDeposit[RandomLocal].z-0.99, Config.Stealing_Cars.CarDeposit[RandomLocal].w, false, true)
+
+    -- Create ped at the car deposit location
+    spawnedPedd = CreatePed(0, model, carDepositLocation.x, carDepositLocation.y, carDepositLocation.z-0.99, carDepositLocation.w, false, true)
     SetAmbientVoiceName(spawnedPedd, 'AMMUCITY') -- Sets Voice Type
     FreezeEntityPosition(spawnedPedd, true)
     SetBlockingOfNonTemporaryEvents(spawnedPedd, true)
     SetEntityInvincible(spawnedPedd, true)
+
+    -- Request and play the animation
     RequestAnimDict(Config.Stealing_Cars.Ped.Animation.dict)
-    while (not HasAnimDictLoaded(Config.Stealing_Cars.Ped.Animation.dict)) do Citizen.Wait(0) end
-    TaskPlayAnim(spawnedPedd,Config.Stealing_Cars.Ped.Animation.dict,Config.Stealing_Cars.Ped.Animation.lib,1.0,-1.0, -1, 1, 1, true, true, true)
-    
+    while not HasAnimDictLoaded(Config.Stealing_Cars.Ped.Animation.dict) do 
+        Citizen.Wait(0) 
+    end
+    TaskPlayAnim(spawnedPedd, Config.Stealing_Cars.Ped.Animation.dict, Config.Stealing_Cars.Ped.Animation.lib, 1.0, -1.0, -1, 1, 1, true, true, true)
+
     if Config.UseInteract then
         exports.vs_interactions:addLocalEntity({
             entity = spawnedPedd,
@@ -176,17 +198,23 @@ function SellVehicle()
                     onSelect = function()    
                         TriggerServerEvent('vs_carstealing:scanner', false)
                         Citizen.Wait(1000)
+
+                        -- Remove the blip after interaction
+                        if DoesBlipExist(carBuyerBlip) then
+                            RemoveBlip(carBuyerBlip)
+                        end
+
                         FreezeEntityPosition(spawnedPedd, false)
                         SetBlockingOfNonTemporaryEvents(spawnedPedd, false)
                         SetEntityInvincible(spawnedPedd, false)
                         TaskVehicleDriveWander(spawnedPedd, spawned_car, 60.0, 316)
+                        sellingcar = false
                         RemoveCoolDown()
                     end,
                     canInteract = function()
                         if cooldown and sellingcar then
                             return true
                         end
-            
                         return false
                     end
                 },
@@ -200,10 +228,17 @@ function SellVehicle()
                 onSelect = function()
                     TriggerServerEvent('vs_carstealing:scanner', false)
                     Citizen.Wait(1000)
+
+                    -- Remove the blip after interaction
+                    if DoesBlipExist(carBuyerBlip) then
+                        RemoveBlip(carBuyerBlip)
+                    end
+
                     FreezeEntityPosition(spawnedPedd, false)
                     SetBlockingOfNonTemporaryEvents(spawnedPedd, false)
                     SetEntityInvincible(spawnedPedd, false)
                     TaskVehicleDriveWander(spawnedPedd, spawned_car, 60.0, 316)
+                    sellingcar = false
                     RemoveCoolDown()
                 end,
                 distance = 2.0,
@@ -211,7 +246,6 @@ function SellVehicle()
                     if cooldown and sellingcar then
                         return true
                     end
-        
                     return false
                 end
             }
