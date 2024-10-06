@@ -25,17 +25,23 @@ CreateThread(function()
                     label = Config.Language[Config.Lang].TakeMission,
                     type = 'function',
                     icon = 'fa-solid fa-location-dot',
-                    onSelect = function()    
-                        Core.TriggerCallback('vs_carstealing:getpd', function(data) 
-                            if data >= Config.PoliceJobs then
-                                local RandomLocal = math.random(0,#Config.Stealing_Cars.CarLocalisations)
-                                cooldown = true
-                                Core.Notification(Config.Language[Config.Lang].GoAndFind)
-                                TriggerServerEvent('vs_carstealing:scanner', true)
-                                local Randomscanner_local = math.random(0,#Config.Stealing_Cars.CarLocalisations[RandomLocal].scanner_local)
-                                SetupScanner(Config.Stealing_Cars.CarLocalisations[RandomLocal].scanner_local[Randomscanner_local], RandomLocal)
+                    onSelect = function()  
+                        Core.TriggerCallback('vs_carstealing:checkitem', function(data) 
+                            if data then
+                                Core.TriggerCallback('vs_carstealing:getpd', function(data) 
+                                    if data >= Config.PoliceJobs then
+                                        local RandomLocal = math.random(0,#Config.Stealing_Cars.CarLocalisations)
+                                        cooldown = true
+                                        Core.Notification(Config.Language[Config.Lang].GoAndFind)
+                                        TriggerServerEvent('vs_carstealing:scanner', true)
+                                        local Randomscanner_local = math.random(0,#Config.Stealing_Cars.CarLocalisations[RandomLocal].scanner_local)
+                                        SetupScanner(Config.Stealing_Cars.CarLocalisations[RandomLocal].scanner_local[Randomscanner_local], RandomLocal)
+                                    else
+                                        Core.Notification(Config.Language[Config.Lang].NoMuchPd)
+                                    end
+                                end)
                             else
-                                Core.Notification(Config.Language[Config.Lang].NoMuchPd)
+                                Core.Notification(Config.Language[Config.Lang].NoItem)
                             end
                         end)
                     end,
@@ -55,16 +61,22 @@ CreateThread(function()
                 icon = "fa-solid fa-user-ninja",
                 label = Config.Language[Config.Lang].TakeMission,
                 onSelect = function()    
-                    Core.TriggerCallback('vs_carstealing:getpd', function(data) 
-                        if data >= Config.PoliceJobs then
-                            local RandomLocal = math.random(0,#Config.Stealing_Cars.CarLocalisations)
-                            cooldown = true
-                            Core.Notification(Config.Language[Config.Lang].GoAndFind)
-                            TriggerServerEvent('vs_carstealing:scanner', true)
-                            local Randomscanner_local = math.random(0,#Config.Stealing_Cars.CarLocalisations[RandomLocal].scanner_local)
-                            SetupScanner(Config.Stealing_Cars.CarLocalisations[RandomLocal].scanner_local[Randomscanner_local], RandomLocal)
+                    Core.TriggerCallback('vs_carstealing:checkitem', function(data) 
+                        if data then
+                            Core.TriggerCallback('vs_carstealing:getpd', function(data) 
+                                if data >= Config.PoliceJobs then
+                                    local RandomLocal = math.random(0,#Config.Stealing_Cars.CarLocalisations)
+                                    cooldown = true
+                                    Core.Notification(Config.Language[Config.Lang].GoAndFind)
+                                    TriggerServerEvent('vs_carstealing:scanner', true)
+                                    local Randomscanner_local = math.random(0,#Config.Stealing_Cars.CarLocalisations[RandomLocal].scanner_local)
+                                    SetupScanner(Config.Stealing_Cars.CarLocalisations[RandomLocal].scanner_local[Randomscanner_local], RandomLocal)
+                                else
+                                    Core.Notification(Config.Language[Config.Lang].NoMuchPd)
+                                end
+                            end)
                         else
-                            Core.Notification(Config.Language[Config.Lang].NoMuchPd)
+                            Core.Notification(Config.Language[Config.Lang].NoItem)
                         end
                     end)
                 end,

@@ -7,7 +7,7 @@ Config.Bridge = {
     MiniGame = 'path' --  path, spot and math
 }
 
-Config.UseInteract = true --(Soon more info 😍)
+Config.UseInteract = false --(Soon more info 😍)
 Config.PoliceJob = 'police'
 Config.PoliceJobs = 1
 
@@ -15,6 +15,11 @@ Config.Wait = {
     Found = 10000,
     Cooldown = 6000,
     WhenPlayerCanGoSell = 6000
+}
+
+Config.Item = { -- Only use this if you require the user to have the item
+    UseItem = true,
+    DeleteItem = false
 }
 
 Config.Payment = {
@@ -93,7 +98,8 @@ Config.Language = {
         SellCar = 'Talk with pedro',
         RewardInfo = 'Hey greate work! Here is your payment for this job {REWARD}$. Come back later we might have another job for you!',
         NoMuchPd = 'Hey men there is not much cops out there cant do it.',
-        CarBuy = "Car Buyer"
+        CarBuy = "Car Buyer",
+        NoItem = 'You don`t have the required item!'
     },
     ['pl'] = {
         BlipName = 'Sygnał kluczyka pojazdu',
@@ -105,7 +111,8 @@ Config.Language = {
         SellCar = 'Porozmawiaj z Pedro',
         RewardInfo = 'Świetna robota! Oto twoja zapłata za to zadanie {REWARD}$. Wróć później, możemy mieć dla ciebie kolejne zlecenie!',
         NoMuchPd = 'Hej, nie ma zbyt wielu policjantów, nie dam rady tego zrobić.',
-        CarBuy = "Kupujący"
+        CarBuy = "Kupujący",
+        NoItem = 'Nie posiadasz urządzenia!'
     }      
 }
 

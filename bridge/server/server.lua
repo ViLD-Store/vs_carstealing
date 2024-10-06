@@ -107,6 +107,24 @@ Core = {
             return tostring(o)
          end
     end,
+    HaveItem = function(source, item)
+        local Player = Core.GetId(tonumber(source))
+        if framework == 'ESX' then
+            local item = Player.getInventoryItem(item)
+            if item ~= nil then
+                return item.count
+            else
+                return 0
+            end
+        elseif framework == 'QB' then
+            local item = Player.Functions.GetItemByName(item)
+            if GetResourceState('ox_inventory') == 'started' then
+                return item?.count or 0
+            else
+                return item?.amount or 0
+            end
+        end
+    end
 }
 
 function GetLib()
