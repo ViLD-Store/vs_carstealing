@@ -18,7 +18,7 @@ This script offers an immersive and thrilling experience for players looking to 
 
 Check out a sneak peek of `vs_carstealing` in action!
 
-[vs_carstealing Preview](https://streamable.com/im54rm)
+[Preview](https://streamable.com/im54rm)
 
 ---
 
@@ -81,6 +81,8 @@ For a more detailed configuration, you can check out the `config.lua` file to ex
 If you run into any issues or have suggestions for improvements, feel free to join our discord https://discord.gg/vild or contribute to the repository with a pull request. Your feedback is appreciated!
 
 ## Our Other Media
+#### **Discord**
+- https://discord.gg/vild
 #### **YouTube**
 - https://www.youtube.com/@VildStore
 #### **TikTok**
