@@ -18,7 +18,7 @@ Config.Wait = {
 }
 
 Config.Item = { -- Only use this if you require the user to have the item
-    UseItem = true,
+    UseItem = false,
     DeleteItem = false
 }
 
