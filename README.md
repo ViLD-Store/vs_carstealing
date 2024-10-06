@@ -18,7 +18,7 @@ This script offers an immersive and thrilling experience for players looking to 
 
 Check out a sneak peek of `vs_carstealing` in action!
 
-[vs_carstealing Preview](https://streamable.com/im54rm)
+[Preview](https://streamable.com/im54rm)
 
 ---
 
