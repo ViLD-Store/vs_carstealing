@@ -1,97 +1,109 @@
 # vs_carstealing
 
-### Bring the excitement of car theft to your FiveM server with `vs_carstealing`
+### Bring the thrill of car theft to your FiveM server with `vs_carstealing`
 
-This script offers an immersive and thrilling experience for players looking to engage in car theft missions. Players can receive tasks, hack vehicles, and deliver stolen cars for rewards—all while avoiding the police or rival gangs. It’s the perfect addition for servers with a focus on roleplay or an economy-driven game loop.
+Elevate the criminal underworld on your FiveM server with `vs_carstealing`. This immersive script allows players to engage in high-stakes car theft missions, where they hack vehicles, evade the police, and deliver stolen cars for rewards. It's an excellent addition for servers focused on roleplay, economy-driven experiences, or just a touch of organized crime.
 
-## Features
+## Key Features
 
-- **Task System:** Players receive randomized car theft missions from an NPC, keeping gameplay fresh and unpredictable.
-- **Signal Scanner:** Track down the target vehicle using a signal scanner, guiding players within a defined radius on the map.
-- **Hacking Minigame:** A skill-based minigame to hack into the car's security system and unlock the key signal.
-- **Steal & Deliver:** Once unlocked, players can steal the vehicle and deliver it to a designated drop-off location for a reward.
-- **Pedro NPC Interaction:** The player interacts with Pedro, the NPC buyer, to turn in the stolen car and receive payment.
-- **Fully Configurable:** Easily adjust mission parameters such as locations, rewards, scanner range, and difficulty to fit your server's needs.
-- **Immersive Roleplay Experience:** Add depth and realism to your server's criminal gameplay with an engaging, high-stakes car theft system.
+- **Dynamic Task System:** Players are assigned randomized car theft missions, ensuring fresh and varied gameplay each time.
+- **Signal Scanner Mechanic:** Players use a signal scanner to track down target vehicles within a specific radius on the map.
+- **Challenging Hacking Minigame:** A skill-based mini-challenge to hack into the vehicle’s security system, adding depth to the gameplay.
+- **Theft & Delivery:** Players steal vehicles and deliver them to designated drop-off locations to earn cash rewards.
+- **NPC Interaction:** Players interact with Pedro, the NPC buyer, to turn in stolen vehicles and get paid.
+- **Fully Configurable:** The script is highly customizable, allowing you to tweak mission settings, rewards, vehicle locations, and more to fit your server’s needs.
+- **Immersive Roleplay:** Enhance your server’s criminal activities with an engaging, realistic car theft system that integrates seamlessly into any roleplay environment.
 
 ## Preview
 
-Check out a sneak peek of `vs_carstealing` in action!
-
-[Preview](https://streamable.com/im54rm)
+Get a sneak peek of `vs_carstealing` in action with this [preview video](https://streamable.com/im54rm)!
 
 ---
 
 ## Installation
 
-1. Download the `vs_carstealing` script from this repository.
-2. Extract the contents to your FiveM server's `resources` folder.
-3. Add `ensure vs_carstealing` to your server's `server.cfg` file.
-4. Customize the configuration to fit your server's preferences (details below).
-5. Restart your server and enjoy!
+Follow these steps to install `vs_carstealing`:
+
+1. Download the `vs_carstealing` script from the repository.
+2. Extract the folder into your FiveM server's `resources` directory.
+3. Add `ensure vs_carstealing` to your `server.cfg` to start the resource.
+4. Customize the `config.lua` file to tailor the script to your server’s preferences.
+5. Restart your server and start stealing cars!
+
+---
 
 ## Configuration
 
-The script comes with a highly configurable setup to fit your server's unique gameplay style. You can modify the following settings in the `config.lua` file:
+The script is designed to be as flexible as possible. You can adjust nearly every aspect of gameplay in the `config.lua` file to suit your server's needs. Below is a breakdown of the key configuration options:
 
 ### General Settings
 
 - **Language Support:**
-  - `Config.Lang`: Set the language used in the game (default is `'en'`).
-  - Modify messages in `Config.Language` to localize the experience.
+  - `Config.Lang`: Select the language used for in-game messages. Default is `'en'`. Customize the available messages in `Config.Language` to localize the experience.
 
 - **Framework Integration:**
-  - `Config.Bridge.Notification`: Choose the notification system (supports `ESX`, `QB`, `OKOK`, `OX`, `mythic`, or `CUSTOM`).
-  - `Config.Bridge.MiniGame`: Select the type of minigame used for hacking (`'path'`, `'spot'`, or `'math'`).
+  - `Config.Bridge.Notification`: Set the notification system (supports `ESX`, `QB`, `OKOK`, `OX`, `mythic`, or custom integration).
+  - `Config.Bridge.MiniGame`: Choose the hacking minigame type (`'path'`, `'spot'`, or `'math'`).
 
 - **Police Integration:**
-  - `Config.PoliceJob`: Set the name of the police job on your server (default: `'police'`).
-  - `Config.PoliceJobs`: Minimum number of online police officers required to initiate a mission.
+  - `Config.PoliceJob`: Define the police job for your server. Default is `'police'`.
+  - `Config.PoliceJobs`: Set the minimum number of police officers required online before a player can start a mission.
 
-### Mission Settings
+### Timing & Cooldown
 
-- **Wait Times:**
-  - `Config.Wait.Found`: Time (in milliseconds) the player has to wait after finding the vehicle.
-  - `Config.Wait.Cooldown`: Cooldown period before players can steal another car.
-  - `Config.Wait.WhenPlayerCanGoSell`: Time to wait before players can deliver the vehicle to the buyer.
+- **Mission Timers:**
+  - `Config.Wait.Found`: Time (in milliseconds) that players must wait after locating the vehicle.
+  - `Config.Wait.Cooldown`: Cooldown period between missions.
+  - `Config.Wait.WhenPlayerCanGoSell`: Delay before players can sell the stolen car to the buyer NPC.
 
-- **Stealing Cars:**
-  - **NPC Configuration:**
-    - `Config.Stealing_Cars.Ped.Ped`: Set the NPC model for the mission giver.
-    - `Config.Stealing_Cars.Ped.Loc`: Define the NPC’s location.
-  - **Vehicle List:**
-    - `Config.Stealing_Cars.VehList`: Specify the list of cars that can be stolen.
-  - **Vehicle Locations:**
-    - `Config.Stealing_Cars.CarLocalisations`: Define the possible spawn locations for target vehicles and their associated scanner locations.
-  - **Drop-off Locations:**
-    - `Config.Stealing_Cars.CarDeposit`: Define multiple drop-off points where players will deliver stolen vehicles.
+### Car Theft Missions
 
-For a more detailed configuration, you can check out the `config.lua` file to explore all available options.
+- **NPC Configuration:**
+  - `Config.Stealing_Cars.Ped.Ped`: Set the model of the NPC who gives missions.
+  - `Config.Stealing_Cars.Ped.Loc`: Specify the location of the mission NPC on the map.
 
-## How It Works
+- **Vehicle List:**
+  - `Config.Stealing_Cars.VehList`: Define which vehicles players are tasked to steal (e.g., `sultan`, `adder`, etc.).
 
-1. **Receive a Mission:** Players start by interacting with an NPC to receive a random car theft mission.
-2. **Use the Signal Scanner:** The provided signal scanner helps the player locate the target vehicle within a specific radius on the map.
-3. **Hack the Vehicle:** Players must complete a skill-based hacking minigame to bypass the car’s security system.
-4. **Steal & Deliver:** After successfully hacking the car, players must drive the stolen vehicle to the drop-off point, avoiding police or rival factions.
-5. **Complete the Mission:** Interact with Pedro, the buyer NPC, to turn in the vehicle and receive payment.
+- **Target Vehicle Locations:**
+  - `Config.Stealing_Cars.CarLocalisations`: Set spawn points for the target vehicles and signal scanner locations.
 
-## Support
+- **Drop-off Points:**
+  - `Config.Stealing_Cars.CarDeposit`: Define the locations where players deliver stolen cars for a reward.
 
-If you run into any issues or have suggestions for improvements, feel free to join our discord https://discord.gg/vild or contribute to the repository with a pull request. Your feedback is appreciated!
+### Reward & Payment
 
-## Our Other Media
-#### **Discord**
-- https://discord.gg/vild
-#### **YouTube**
-- https://www.youtube.com/@VildStore
-#### **TikTok**
-- https://www.tiktok.com/@vildstore
-#### **Tebex Store**
-- https://vildstore.com
+- **Item Requirements:**
+  - `Config.Item.UseItem`: Enable or disable the requirement for an item to initiate the mission.
+  - `Config.Item.DeleteItem`: Set whether the required item is consumed upon use.
+
+- **Payment System:**
+  - `Config.Payment.type`: Specify the type of reward (e.g., `money` or custom currency).
+  - `Config.Payment.min` & `Config.Payment.max`: Set the minimum and maximum payment players can receive for delivering stolen vehicles.
+
+---
+
+## Gameplay Overview
+
+1. **Receive a Mission:** Players interact with an NPC (Pedro) to receive a randomized car theft mission.
+2. **Use the Signal Scanner:** Players locate the target vehicle using a signal scanner, which directs them within a certain radius.
+3. **Hack the Car:** Players must complete a hacking minigame to unlock the vehicle’s security system.
+4. **Steal & Deliver:** Once the car is hacked, players steal the vehicle and must evade the police as they drive it to a drop-off location.
+5. **Get Paid:** Players deliver the car to Pedro, the buyer NPC, and receive a reward.
+
+---
+
+## Support & Community
+
+Have questions or suggestions? Join our community and get help:
+
+- **Discord:** [Join us on Discord](https://discord.gg/vild) for support and updates.
+- **YouTube:** [Watch our videos](https://www.youtube.com/@VildStore) for tutorials and showcases.
+- **TikTok:** [Follow us on TikTok](https://www.tiktok.com/@vildstore) for behind-the-scenes content.
+- **Tebex Store:** [Visit our Tebex Store](https://vildstore.com) for more exciting resources.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+`vs_carstealing` is licensed under the MIT License. For more details, see the [LICENSE](./LICENSE) file.
