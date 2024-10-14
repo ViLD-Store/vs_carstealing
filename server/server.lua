@@ -87,11 +87,8 @@ Citizen.CreateThread(function()
                 print("Latest version: " .. responseData.version)
                 print("Current version: " .. curVersion)
                 print("Update notes: " .. responseData.update)
-            elseif curVersion > responseData.version then
-                print("You have skipped a few versions of " .. GetCurrentResourceName() .. " or the API went offline.")
-                print("If it's still online, I advise you to update (or downgrade?).")
             else
-                print("\n" .. GetCurrentResourceName() .. " is up to date. Have fun!")
+                print(GetCurrentResourceName() .. " is up to date. Have fun!")
             end
         end, "GET")
     end
