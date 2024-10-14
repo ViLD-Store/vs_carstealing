@@ -17,7 +17,7 @@ Elevate the criminal underworld on your FiveM server with `vs_carstealing`. This
 
 ## Preview
 
-Get a sneak peek of `vs_carstealing` in action with this [preview video]([https://streamable.com/im54rm](https://www.youtube.com/watch?v=2Jdj9aSof84))!
+Get a sneak peek of `vs_carstealing` in action with this [preview video](https://www.youtube.com/watch?v=2Jdj9aSof84)!
 
 ---
 
