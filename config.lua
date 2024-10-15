@@ -129,15 +129,10 @@ function GetFramework()
     elseif GetResourceState('es_extended'):find('started') then
         ESX = exports['es_extended']:getSharedObject()
         return 'ESX'
+    elseif GetResourceState('qbx_core'):find('started') then
+        QBX = exports['es_extended']:getSharedObject()
+        return 'QBOX'
     else
         return 'STANDALONE'
     end
-end
-
-function CustomNotify(type, message)
-    print(type, message) -- Put your custom notify trigger or export here (CLIENT)
-end
-
-function CustomNotifyServer(type, message)
-    print(type, message) -- Put your custom notify trigger or export here (SERVER)
 end

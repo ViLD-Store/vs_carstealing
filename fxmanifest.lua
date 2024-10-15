@@ -4,17 +4,19 @@ lua54 'yes'
 
 author 'Vild Store'
 description 'Car Robbery'
-version '0.0.4'
+version '0.0.5'
 
 shared_script 'config.lua'
 
 client_scripts {
     'bridge/client/*.lua',
+    'bridge/client/libs/*.lua',
     'client/*.lua'
 }
 
 server_scripts {
     'bridge/server/*.lua',
+    'bridge/server/libs/*.lua',
     'server/*.lua'
 }
 
