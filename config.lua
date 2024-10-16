@@ -99,7 +99,8 @@ Config.Language = {
         RewardInfo = 'Hey greate work! Here is your payment for this job {REWARD}$. Come back later we might have another job for you!',
         NoMuchPd = 'Hey men there is not much cops out there cant do it.',
         CarBuy = "Car Buyer",
-        NoItem = 'You don`t have the required item!'
+        NoItem = 'You don`t have the required item!',
+        LostGame = 'You did it wrong! Run away as cops gone be here soon!'
     },
     ['pl'] = {
         BlipName = 'Sygnał kluczyka pojazdu',
@@ -112,7 +113,8 @@ Config.Language = {
         RewardInfo = 'Świetna robota! Oto twoja zapłata za to zadanie {REWARD}$. Wróć później, możemy mieć dla ciebie kolejne zlecenie!',
         NoMuchPd = 'Hej, nie ma zbyt wielu policjantów, nie dam rady tego zrobić.',
         CarBuy = "Kupujący",
-        NoItem = 'Nie posiadasz urządzenia!'
+        NoItem = 'Nie posiadasz urządzenia!',
+        LostGame = 'Zrobiłeś to źle! Uciekaj, bo gliny zaraz tu będą!'
     }      
 }
 

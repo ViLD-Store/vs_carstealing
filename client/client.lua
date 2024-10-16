@@ -151,7 +151,9 @@ function FoundX()
             SellVehicle()
         else
             SetNuiFocus(false, false)
-            print("lose")
+            Core.Notification(Config.Language[Config.Lang].LostGame)
+            Citizen.Wait(Config.Wait.Found)
+            TriggerServerEvent('vs_carstealing:SendToPolice', spawned_car, true)
         end
     end, Config.Bridge.MiniGame)
 end
