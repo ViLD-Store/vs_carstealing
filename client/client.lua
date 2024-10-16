@@ -154,6 +154,8 @@ function FoundX()
             Core.Notification(Config.Language[Config.Lang].LostGame)
             Citizen.Wait(Config.Wait.Found)
             TriggerServerEvent('vs_carstealing:SendToPolice', spawned_car, true)
+            Citizen.Wait(Config.Wait.WhenPlayerCanGoSell)
+            TriggerEvent('vs_carstealing:rmblip')
         end
     end, Config.Bridge.MiniGame)
 end
