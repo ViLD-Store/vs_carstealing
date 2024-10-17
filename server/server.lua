@@ -20,6 +20,11 @@ AddEventHandler('vs_carstealing:scanner', function(scannera)
     end
 end)
 
+RegisterServerEvent('vs_carstealing:rmscanner')
+AddEventHandler('vs_carstealing:rmscanner', function()
+    Core.RemoveItem(source, 'weapon_digiscanner', 1)
+end)
+
 RegisterServerEvent('vs_carstealing:SendToPolice')
 AddEventHandler('vs_carstealing:SendToPolice', function(veh, torf)
 	TriggerClientEvent('vs_carstealing:PDTracker', -1, veh, torf)

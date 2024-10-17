@@ -156,6 +156,7 @@ function FoundX()
             TriggerServerEvent('vs_carstealing:SendToPolice', spawned_car, true)
             Citizen.Wait(Config.Wait.WhenPlayerCanGoSell)
             TriggerEvent('vs_carstealing:rmblip')
+            TriggerServerEvent('vs_carstealing:rmscanner')
         end
     end, Config.Bridge.MiniGame)
 end
