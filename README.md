@@ -92,6 +92,17 @@ The script is designed to be as flexible as possible. You can adjust nearly ever
 4. **Steal & Deliver:** Once the car is hacked, players steal the vehicle and must evade the police as they drive it to a drop-off location.
 5. **Get Paid:** Players deliver the car to Pedro, the buyer NPC, and receive a reward.
 
+## FaQ
+- Missing Item
+Add this to weapons in inventory
+```
+        ['WEAPON_DIGISCANNER'] = {
+            label = 'Digi Scanner',
+            weight = 3300,
+            durability = 0.03
+        },
+```
+
 ---
 
 ## Support & Community
