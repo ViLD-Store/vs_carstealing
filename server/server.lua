@@ -22,7 +22,13 @@ end)
 
 RegisterServerEvent('vs_carstealing:rmscanner')
 AddEventHandler('vs_carstealing:rmscanner', function()
-    Core.RemoveItem(source, 'weapon_digiscanner', 1)
+    if Config.Item.UseItem then
+        if Config.Item.DeleteItem then
+            Core.RemoveItem(source, 'weapon_digiscanner', 1)
+        end
+    else
+        Core.RemoveItem(source, 'weapon_digiscanner', 1)
+    end
 end)
 
 RegisterServerEvent('vs_carstealing:SendToPolice')
